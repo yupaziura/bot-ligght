@@ -4,21 +4,26 @@ import { Telegraf } from 'telegraf';
 import pkg from 'express';
 import got from 'got';
 import https from 'https';
-import fetch from "node-fetch";
+import { getMainMenu } from './keyboard.js'
 
+import fetch from "node-fetch";
 
 const app = express();
 const bot = new Telegraf(TOKEN)
 
 
+bot.start( ctx => {
+    ctx.reply('Welcome, bro', getMainMenu())
+    
+})
 
-bot.start(async ctx => {
+bot.hears('Світло є?', async ctx => {
 
     fetch('https://vadymklymenko.com/ping/?ip=109.251.102.171')
     .then((response) => response.json())
     .then((data) => {
         // console.log(data.status.toString())
-        ctx.reply(`${data.status == 'ok' ? "ye" : "nema"}`)
+        ctx.reply(`${data.status == 'ok' ? "Світло є 💡" : "Світла немає 🥲"}`)
 
         // return data.status 
     
