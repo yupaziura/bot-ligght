@@ -13,7 +13,7 @@ const bot = new Telegraf(TOKEN)
 
 
 bot.start( ctx => {
-    ctx.reply('Welcome, bro', getMainMenu())
+    ctx.reply('Вітаю! Тут Ви можете перевірити наявність світла. Натисніть на кнопку "Світло є?"', getMainMenu())
     
 })
 
